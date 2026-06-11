@@ -585,7 +585,7 @@ function renderNav() {
 function renderSidebar() {
     const subs  = subcatsFor(curCat);
     const total = countFor(curCat, '전체');
-    let html = `<div class="sidebar-title">소 카테고리</div>`;
+    let html = `<div class="sidebar-title">카테고리</div>`;
     html += `<div class="sidebar-item ${curSub === '전체' ? 'active' : ''}" onclick="selectSub('전체')">
         <span>전체 보기</span><span class="sidebar-count">${total}</span></div>`;
     subs.forEach(s => {
