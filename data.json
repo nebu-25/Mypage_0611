@@ -7,7 +7,7 @@
         "emoji": "🤖", "tag": "assistant", "label": "챗봇",
         "pricing": "freemium", "pricingNote": "무료 플랜 + Pro $20/월",
         "features": ["Claude 3.5/3 Sonnet·Opus 모델 지원", "문서·이미지 분석", "코드 생성 및 디버깅", "긴 컨텍스트(200K 토큰)"],
-        "korean": true, "api": true, "mobileApp": true
+        "korean": true, "api": true, "mobileApp": true, "alsoIn": ["학습 > AI 프로덕트"]
       },
       {
         "name": "ChatGPT", "url": "https://chatgpt.com", "domain": "chatgpt.com",
@@ -15,7 +15,7 @@
         "emoji": "💬", "tag": "assistant", "label": "챗봇",
         "pricing": "freemium", "pricingNote": "무료 플랜 + Plus $20/월",
         "features": ["GPT-4o 모델 지원", "이미지·파일 분석", "DALL-E 이미지 생성", "GPT 스토어"],
-        "korean": true, "api": true, "mobileApp": true
+        "korean": true, "api": true, "mobileApp": true, "alsoIn": ["학습 > AI 프로덕트"]
       },
       {
         "name": "Gemini", "url": "https://gemini.google.com", "domain": "gemini.google.com",
@@ -149,7 +149,7 @@
         "emoji": "💜", "tag": "appbuild", "label": "앱 빌더",
         "pricing": "freemium", "pricingNote": "무료 5프로젝트 + Pro $20/월",
         "features": ["자연어로 풀스택 앱 생성", "React/Supabase 기반", "GitHub 연동", "실시간 미리보기"],
-        "korean": false, "api": false, "mobileApp": false
+        "korean": false, "api": false, "mobileApp": false, "alsoIn": ["학습 > AI 프로덕트"]
       },
       {
         "name": "V0", "url": "https://v0.dev", "domain": "v0.dev",
@@ -157,7 +157,7 @@
         "emoji": "▲", "tag": "appbuild", "label": "앱 빌더",
         "pricing": "freemium", "pricingNote": "무료 200크레딧 + Pro $20/월",
         "features": ["React UI 컴포넌트 생성", "shadcn/ui 기반", "코드 복사·편집", "Vercel 즉시 배포"],
-        "korean": false, "api": false, "mobileApp": false
+        "korean": false, "api": false, "mobileApp": false, "alsoIn": ["학습 > AI 프로덕트"]
       },
       {
         "name": "Bolt.new", "url": "https://bolt.new", "domain": "bolt.new",
@@ -229,7 +229,7 @@
         "emoji": "🐙", "tag": "platform", "label": "코드",
         "pricing": "freemium", "pricingNote": "무료 + Team $4/월~",
         "features": ["Git 저장소 호스팅", "Actions CI/CD", "Pages 정적 배포", "Copilot AI 통합"],
-        "korean": false, "api": true, "mobileApp": true
+        "korean": false, "api": true, "mobileApp": true, "alsoIn": ["학습 > AI 프로덕트"]
       }
     ],
     "학습 & 연구": [
@@ -239,7 +239,7 @@
         "emoji": "🔬", "tag": "research", "label": "연구",
         "pricing": "freemium", "pricingNote": "ChatGPT 무료 + API 유료",
         "features": ["GPT-4o·o1 최신 모델", "DALL-E 이미지 생성", "Whisper 음성 인식", "API 및 연구 자료 공개"],
-        "korean": true, "api": true, "mobileApp": false
+        "korean": true, "api": true, "mobileApp": false, "alsoIn": ["학습 > AI 리서치"]
       },
       {
         "name": "Kaggle", "url": "https://kaggle.com", "domain": "kaggle.com",
@@ -256,6 +256,224 @@
         "pricing": "free", "pricingNote": "무료",
         "features": ["AI 논문 + 구현 코드 연결", "SOTA 벤치마크 추적", "데이터셋 검색", "AI 트렌드 모니터링"],
         "korean": false, "api": false, "mobileApp": false
+      }
+    ]
+  },
+  "학습": {
+    "AI 프로덕트": [
+      {
+        "name": "Claude", "url": "https://claude.ai", "domain": "claude.ai",
+        "desc": "Anthropic이 만든 안전하고 유능한 AI 어시스턴트",
+        "emoji": "🤖", "tag": "assistant", "label": "챗봇",
+        "pricing": "freemium", "pricingNote": "무료 플랜 + Pro $20/월",
+        "features": ["Claude 3.5/3 Sonnet·Opus 모델 지원", "문서·이미지 분석", "코드 생성 및 디버깅", "긴 컨텍스트(200K 토큰)"],
+        "korean": true, "api": true, "mobileApp": true, "alsoIn": ["AI 어시스턴트 > 챗봇 / LLM"]
+      },
+      {
+        "name": "ChatGPT", "url": "https://chatgpt.com", "domain": "chatgpt.com",
+        "desc": "OpenAI가 개발한 세계 최대 AI 챗봇 서비스",
+        "emoji": "💬", "tag": "assistant", "label": "챗봇",
+        "pricing": "freemium", "pricingNote": "무료 플랜 + Plus $20/월",
+        "features": ["GPT-4o 모델 지원", "이미지·파일 분석", "DALL-E 이미지 생성", "GPT 스토어"],
+        "korean": true, "api": true, "mobileApp": true, "alsoIn": ["AI 어시스턴트 > 챗봇 / LLM"]
+      },
+      {
+        "name": "GitHub", "url": "https://github.com", "domain": "github.com",
+        "desc": "세계 최대 오픈소스 코드 저장소",
+        "emoji": "🐙", "tag": "platform", "label": "코드",
+        "pricing": "freemium", "pricingNote": "무료 + Team $4/월~",
+        "features": ["Git 저장소 호스팅", "Actions CI/CD", "Pages 정적 배포", "Copilot AI 통합"],
+        "korean": false, "api": true, "mobileApp": true, "alsoIn": ["플랫폼 & 리소스 > 코드 저장소"]
+      },
+      {
+        "name": "GitHub Desktop", "url": "https://desktop.github.com", "domain": "desktop.github.com",
+        "desc": "Git 작업을 시각화하는 공식 데스크톱 GUI 클라이언트",
+        "emoji": "🖥️", "tag": "coding", "label": "Git GUI",
+        "pricing": "free", "pricingNote": "완전 무료 오픈소스",
+        "features": ["Git 브랜치·머지 시각화", "커밋 히스토리 탐색", "코드 변경 diff 뷰", "GitHub 계정 연동"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "Streamlit", "url": "https://streamlit.io", "domain": "streamlit.io",
+        "desc": "Python으로 데이터·AI 앱을 빠르게 만드는 오픈소스 프레임워크",
+        "emoji": "🎈", "tag": "appbuild", "label": "앱 빌더",
+        "pricing": "freemium", "pricingNote": "오픈소스 무료 + Cloud 유료 플랜",
+        "features": ["Python 코드만으로 웹앱 생성", "데이터 시각화 컴포넌트", "Streamlit Cloud 배포", "ML 모델 데모 최적화"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "V0", "url": "https://v0.dev", "domain": "v0.dev",
+        "desc": "Vercel의 AI UI 컴포넌트 생성기",
+        "emoji": "▲", "tag": "appbuild", "label": "앱 빌더",
+        "pricing": "freemium", "pricingNote": "무료 200크레딧 + Pro $20/월",
+        "features": ["React UI 컴포넌트 생성", "shadcn/ui 기반", "코드 복사·편집", "Vercel 즉시 배포"],
+        "korean": false, "api": false, "mobileApp": false, "alsoIn": ["AI 개발 도구 > 앱 빌더"]
+      },
+      {
+        "name": "Lovable", "url": "https://lovable.dev", "domain": "lovable.dev",
+        "desc": "자연어로 풀스택 웹앱을 만드는 AI 빌더",
+        "emoji": "💜", "tag": "appbuild", "label": "앱 빌더",
+        "pricing": "freemium", "pricingNote": "무료 5프로젝트 + Pro $20/월",
+        "features": ["자연어로 풀스택 앱 생성", "React/Supabase 기반", "GitHub 연동", "실시간 미리보기"],
+        "korean": false, "api": false, "mobileApp": false, "alsoIn": ["AI 개발 도구 > 앱 빌더"]
+      },
+      {
+        "name": "Vercel", "url": "https://vercel.com", "domain": "vercel.com",
+        "desc": "프론트엔드 프레임워크에 최적화된 배포·호스팅 플랫폼",
+        "emoji": "🚀", "tag": "platform", "label": "배포 플랫폼",
+        "pricing": "freemium", "pricingNote": "Hobby 무료 + Pro $20/월",
+        "features": ["Next.js·React 최적화 배포", "자동 HTTPS·글로벌 CDN", "서버리스 Functions", "Preview Deployments"],
+        "korean": false, "api": true, "mobileApp": false
+      },
+      {
+        "name": "Netlify", "url": "https://netlify.com", "domain": "netlify.com",
+        "desc": "정적 사이트 및 JAMstack 앱을 위한 배포·호스팅 플랫폼",
+        "emoji": "🌐", "tag": "platform", "label": "배포 플랫폼",
+        "pricing": "freemium", "pricingNote": "무료 플랜 + Pro $19/월",
+        "features": ["정적 사이트 자동 배포", "Forms·Functions 내장", "GitHub 연동 CI/CD", "Split Testing"],
+        "korean": false, "api": true, "mobileApp": false
+      },
+      {
+        "name": "Antigravity", "url": "https://antigravity.dev", "domain": "antigravity.dev",
+        "desc": "AI 기반 인터랙티브 코딩 학습 플랫폼",
+        "emoji": "🪐", "tag": "coding", "label": "코딩 학습",
+        "pricing": "freemium", "pricingNote": "무료 플랜 + 유료 플랜",
+        "features": ["AI 코딩 어시스턴트", "인터랙티브 코딩 환경", "프로젝트 기반 학습", "실시간 피드백"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "OpenRouter", "url": "https://openrouter.ai", "domain": "openrouter.ai",
+        "desc": "100개 이상의 LLM을 단일 API 엔드포인트로 연결하는 허브",
+        "emoji": "🔀", "tag": "platform", "label": "API 허브",
+        "pricing": "paid", "pricingNote": "모델별 종량제 (일부 무료 모델 포함)",
+        "features": ["100+ LLM 단일 API 통합", "OpenAI 호환 API 포맷", "무료 모델 포함", "모델 비교·라우팅"],
+        "korean": false, "api": true, "mobileApp": false
+      }
+    ],
+    "AI & LM": [
+      {
+        "name": "NotebookLM", "url": "https://notebooklm.google.com", "domain": "notebooklm.google.com",
+        "desc": "Google의 AI 기반 연구·노트 정리 도우미",
+        "emoji": "📓", "tag": "assistant", "label": "AI 노트",
+        "pricing": "free", "pricingNote": "완전 무료 (Google 계정 필요)",
+        "features": ["문서·PDF 업로드 후 AI 질문", "자동 요약 및 브리핑 생성", "오디오 팟캐스트 자동 생성", "출처 인용 기반 답변"],
+        "korean": true, "api": false, "mobileApp": false
+      }
+    ],
+    "AI 리서치": [
+      {
+        "name": "Anthropic", "url": "https://anthropic.com", "domain": "anthropic.com",
+        "desc": "Claude AI를 개발한 AI 안전 연구 기업",
+        "emoji": "🛡️", "tag": "research", "label": "AI 연구",
+        "pricing": "free", "pricingNote": "사이트 무료, API 별도 유료",
+        "features": ["Claude 모델 개발·연구", "AI 안전 및 정렬 연구", "Constitutional AI 방법론", "연구 논문 및 보고서 공개"],
+        "korean": false, "api": true, "mobileApp": false
+      },
+      {
+        "name": "OpenAI", "url": "https://openai.com", "domain": "openai.com",
+        "desc": "GPT 시리즈를 개발한 AI 선도 연구 기관",
+        "emoji": "🔬", "tag": "research", "label": "AI 연구",
+        "pricing": "free", "pricingNote": "사이트 무료, API 별도 유료",
+        "features": ["GPT-4o·o1 최신 모델 개발", "DALL-E·Whisper·Sora 연구", "AI 안전 연구", "API 및 연구 자료 공개"],
+        "korean": true, "api": true, "mobileApp": false, "alsoIn": ["플랫폼 & 리소스 > 학습 & 연구"]
+      },
+      {
+        "name": "Google DeepMind", "url": "https://deepmind.google", "domain": "deepmind.google",
+        "desc": "Google의 최첨단 AI 연구 조직",
+        "emoji": "🧠", "tag": "research", "label": "AI 연구",
+        "pricing": "free", "pricingNote": "무료 접근",
+        "features": ["Gemini 모델 연구·개발", "AlphaFold·AlphaGo 개발", "AI 안전 및 윤리 연구", "최신 연구 논문 공개"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "Meta AI", "url": "https://ai.meta.com", "domain": "ai.meta.com",
+        "desc": "Meta의 AI 연구 조직 및 Llama 오픈소스 모델 허브",
+        "emoji": "🦙", "tag": "research", "label": "AI 연구",
+        "pricing": "free", "pricingNote": "무료, Llama 오픈소스 제공",
+        "features": ["Llama 오픈소스 모델 공개", "AI 연구 논문 발표", "Meta AI 어시스턴트 통합", "오픈소스 AI 도구 제공"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "Mistral AI", "url": "https://mistral.ai", "domain": "mistral.ai",
+        "desc": "유럽 대표 오픈소스 LLM 연구소·기업",
+        "emoji": "🌬️", "tag": "research", "label": "AI 연구",
+        "pricing": "free", "pricingNote": "사이트 무료, API 별도 유료",
+        "features": ["오픈소스 LLM 모델 공개", "Mistral Large·Small·Codestral 개발", "유럽산 AI 대표 주자", "기업용 솔루션 제공"],
+        "korean": false, "api": true, "mobileApp": false
+      }
+    ],
+    "IT 트렌드": [
+      {
+        "name": "Product Hunt", "url": "https://producthunt.com", "domain": "producthunt.com",
+        "desc": "매일 새로운 테크·AI 프로덕트를 발견하는 커뮤니티",
+        "emoji": "🐱", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["일별 신규 프로덕트 랭킹", "커뮤니티 투표 & 댓글", "AI 도구 발견 최적화", "스타트업 론칭 플랫폼"],
+        "korean": false, "api": false, "mobileApp": true
+      },
+      {
+        "name": "Hacker News", "url": "https://news.ycombinator.com", "domain": "news.ycombinator.com",
+        "desc": "Y Combinator가 운영하는 기술·스타트업 뉴스 포럼",
+        "emoji": "📰", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["기술·스타트업 뉴스 큐레이션", "커뮤니티 토론·댓글", "Ask HN·Show HN 스레드", "실시간 랭킹"],
+        "korean": false, "api": true, "mobileApp": false
+      },
+      {
+        "name": "TechCrunch", "url": "https://techcrunch.com", "domain": "techcrunch.com",
+        "desc": "테크 산업 뉴스와 스타트업 소식을 다루는 미디어",
+        "emoji": "🗞️", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료 (일부 프리미엄)",
+        "features": ["테크 업계 최신 뉴스", "스타트업 펀딩 소식", "AI 산업 동향", "TechCrunch Disrupt 행사"],
+        "korean": false, "api": false, "mobileApp": true
+      },
+      {
+        "name": "The Verge", "url": "https://theverge.com", "domain": "theverge.com",
+        "desc": "소비자 기술과 AI 트렌드를 다루는 테크 미디어",
+        "emoji": "📱", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["최신 기기·기술 리뷰", "AI 산업 뉴스", "빅테크 동향 분석", "팟캐스트·비디오 콘텐츠"],
+        "korean": false, "api": false, "mobileApp": true
+      },
+      {
+        "name": "MIT Technology Review", "url": "https://technologyreview.com", "domain": "technologyreview.com",
+        "desc": "MIT가 발행하는 심층 기술 분석 매거진",
+        "emoji": "🎓", "tag": "research", "label": "IT 트렌드",
+        "pricing": "freemium", "pricingNote": "일부 무료 + 디지털 구독 $50/년",
+        "features": ["AI·기술 심층 분석", "미래 기술 전망 보고서", "10대 혁신 기술 선정", "연구 기반 저널리즘"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "Ars Technica", "url": "https://arstechnica.com", "domain": "arstechnica.com",
+        "desc": "심층 기술·과학 분석을 제공하는 테크 뉴스 사이트",
+        "emoji": "🔭", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료 (광고 제거 구독 선택 가능)",
+        "features": ["심층 기술 분석 기사", "과학·우주·보안 뉴스", "AI·하드웨어 심층 보도", "전문가 수준 기술 리뷰"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "VentureBeat", "url": "https://venturebeat.com", "domain": "venturebeat.com",
+        "desc": "AI 및 테크 비즈니스 전문 뉴스 미디어",
+        "emoji": "💼", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["AI 산업 비즈니스 뉴스", "기업·스타트업 동향", "Transform AI 콘퍼런스", "AI 적용 사례 분석"],
+        "korean": false, "api": false, "mobileApp": false
+      },
+      {
+        "name": "요즘IT", "url": "https://yozm.wishket.com", "domain": "yozm.wishket.com",
+        "desc": "개발자·기획자를 위한 한국어 IT 트렌드 미디어",
+        "emoji": "🇰🇷", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["한국어 IT 트렌드 콘텐츠", "개발 실무 아티클", "기술 트렌드 해설", "IT 직군 커리어 정보"],
+        "korean": true, "api": false, "mobileApp": false
+      },
+      {
+        "name": "GeekNews", "url": "https://news.hada.io", "domain": "news.hada.io",
+        "desc": "국내외 기술 뉴스를 큐레이션하는 한국어 테크 커뮤니티",
+        "emoji": "🤓", "tag": "research", "label": "IT 트렌드",
+        "pricing": "free", "pricingNote": "무료",
+        "features": ["HN·Reddit 기술 뉴스 한국어 큐레이션", "AI·개발 트렌드 모음", "커뮤니티 댓글·토론", "주간 뉴스레터"],
+        "korean": true, "api": false, "mobileApp": false
       }
     ]
   }

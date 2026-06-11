@@ -386,6 +386,30 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.25); border-radius: 3px; }
 
+        /* ── Also In ── */
+        .card-alsoin {
+            display: flex; gap: 5px; flex-wrap: wrap;
+            padding-top: 10px; border-top: 1px solid var(--border);
+        }
+        .alsoin-badge {
+            font-size: 10px; color: var(--text-muted);
+            display: inline-flex; align-items: center; gap: 3px;
+            padding: 2px 8px; border-radius: 20px;
+            border: 1px solid var(--border); background: transparent;
+            cursor: pointer; transition: all 0.18s; white-space: nowrap;
+        }
+        .alsoin-badge:hover { color: #a89fff; border-color: rgba(108,99,255,0.4); background: rgba(108,99,255,0.08); }
+        .cards-list .card-alsoin { display: none; }
+        .modal-alsoin-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .alsoin-chip {
+            font-size: 12px; color: #a89fff;
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 6px 12px; border-radius: 20px;
+            border: 1px solid rgba(108,99,255,0.3); background: rgba(108,99,255,0.08);
+            cursor: pointer; transition: all 0.18s; white-space: nowrap;
+        }
+        .alsoin-chip:hover { background: rgba(108,99,255,0.18); border-color: rgba(108,99,255,0.5); }
+
         /* ── Mobile ── */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
@@ -677,6 +701,10 @@ function cardHTML(s, q = '') {
                 </div>
                 <a class="card-btn" href="${s.url}" target="_blank" onclick="event.stopPropagation()">방문하기 →</a>
             </div>
+            ${s.alsoIn && s.alsoIn.length ? `
+            <div class="card-alsoin">
+                ${s.alsoIn.map(a => `<span class="alsoin-badge" onclick="navigateToAlsoIn('${a}', event)">🔗 ${a}</span>`).join('')}
+            </div>` : ''}
         </div>`;
 }
 
@@ -723,6 +751,13 @@ function openModal(name) {
                     ).join('')}
                 </div>
             </div>
+            ${s.alsoIn && s.alsoIn.length ? `
+            <div>
+                <div class="modal-section-title">다른 카테고리에서도 볼 수 있어요</div>
+                <div class="modal-alsoin-tags">
+                    ${s.alsoIn.map(a => `<span class="alsoin-chip" onclick="navigateAndClose('${a}')">📌 ${a} →</span>`).join('')}
+                </div>
+            </div>` : ''}
         </div>
         <div class="modal-footer">
             <button class="modal-cancel-btn" onclick="closeModal()">닫기</button>
@@ -749,6 +784,22 @@ document.addEventListener('keydown', e => {
     }
     if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
 });
+
+/* ── Also In Navigation ── */
+function navigateToAlsoIn(alsoInStr, event) {
+    event.stopPropagation();
+    const parts = alsoInStr.split(' > ');
+    curCat = parts[0].trim();
+    curSub = parts[1] ? parts[1].trim() : '전체';
+    renderNav(); renderSidebar(); renderMain(true);
+}
+function navigateAndClose(alsoInStr) {
+    closeModal();
+    const parts = alsoInStr.split(' > ');
+    curCat = parts[0].trim();
+    curSub = parts[1] ? parts[1].trim() : '전체';
+    renderNav(); renderSidebar(); renderMain(true);
+}
 
 /* ── Events ── */
 function selectCat(c) { curCat = c; curSub = '전체'; closeSidebar(); renderNav(); renderSidebar(); renderMain(true); }
