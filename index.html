@@ -256,9 +256,86 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.25); border-radius: 3px; }
 
+        /* ── Search ── */
+        .search-wrap { margin-left: auto; position: relative; }
+        .search-input {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px 34px 8px 14px;
+            color: var(--text);
+            font-size: 13px;
+            width: 200px;
+            outline: none;
+            transition: border-color 0.2s, width 0.2s, background 0.2s;
+        }
+        .search-input:focus {
+            border-color: rgba(108,99,255,0.5);
+            background: rgba(108,99,255,0.08);
+            width: 260px;
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-clear {
+            position: absolute;
+            right: 10px; top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1;
+            display: none;
+        }
+        .search-clear.visible { display: block; }
+        .search-clear:hover { color: var(--text); }
+
+        /* ── Controls Bar ── */
+        .controls-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .sort-wrap { display: flex; align-items: center; gap: 8px; }
+        .sort-label { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+        .sort-btns { display: flex; gap: 4px; }
+        .sort-btn {
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+        .sort-btn:hover { color: var(--text); border-color: rgba(108,99,255,0.4); }
+        .sort-btn.active {
+            color: #a89fff;
+            border-color: rgba(108,99,255,0.5);
+            background: rgba(108,99,255,0.12);
+        }
+
+        /* ── Highlight ── */
+        .hl { background: rgba(253,224,71,0.25); color: #fde047; border-radius: 2px; padding: 0 1px; }
+
+        /* ── No Result ── */
+        .no-result {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+        .no-result-icon { font-size: 48px; margin-bottom: 16px; }
+        .no-result-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+        .no-result-sub { font-size: 13px; }
+
         @media (max-width: 768px) {
             .sidebar { display: none; }
             .main { margin-left: 0; padding: 20px 16px; }
+            .search-input { width: 140px; }
+            .search-input:focus { width: 180px; }
         }
     </style>
 </head>
@@ -268,6 +345,10 @@
 <nav class="top-nav">
     <div class="logo">✦ AI Hub</div>
     <div class="nav-items" id="topNav"></div>
+    <div class="search-wrap">
+        <input class="search-input" id="searchInput" type="text" placeholder="🔍 서비스 검색..." autocomplete="off">
+        <span class="search-clear" id="searchClear" title="초기화">✕</span>
+    </div>
 </nav>
 
 <!-- Sidebar -->
@@ -340,6 +421,8 @@ const DATA = {
 const CATEGORIES = ['전체', ...Object.keys(DATA)];
 let curCat = '전체';
 let curSub = '전체';
+let searchQuery = '';
+let sortOrder = 'default'; // 'default' | 'name-asc' | 'name-desc'
 
 /* ── Helpers ── */
 function allSites() {
@@ -399,30 +482,97 @@ function renderSidebar() {
     document.getElementById('sidebar').innerHTML = html;
 }
 
+/* ── Highlight ── */
+function hl(text, query) {
+    if (!query) return text;
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return text.replace(new RegExp(`(${escaped})`, 'gi'), '<span class="hl">$1</span>');
+}
+
+/* ── Sort sites ── */
+function applySortAndFilter(sites) {
+    let result = [...sites];
+    if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        result = result.filter(s =>
+            s.name.toLowerCase().includes(q) ||
+            s.desc.toLowerCase().includes(q) ||
+            s.domain.toLowerCase().includes(q) ||
+            s.label.toLowerCase().includes(q)
+        );
+    }
+    if (sortOrder === 'name-asc')  result.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
+    if (sortOrder === 'name-desc') result.sort((a, b) => b.name.localeCompare(a.name, 'ko'));
+    return result;
+}
+
 /* ── Render Main ── */
 function renderMain() {
-    const map = sitesFor(curCat, curSub);
-    const total = Object.values(map).reduce((a, b) => a + b.length, 0);
+    // 검색 중에는 전체 데이터에서 탐색
+    let map;
+    if (searchQuery) {
+        const flat = {};
+        Object.entries(DATA).forEach(([, subs]) =>
+            Object.entries(subs).forEach(([s, arr]) => {
+                if (!flat[s]) flat[s] = [];
+                flat[s].push(...arr);
+            })
+        );
+        map = flat;
+    } else {
+        map = sitesFor(curCat, curSub);
+    }
+
+    // 검색 + 정렬 적용
+    const filtered = {};
+    Object.entries(map).forEach(([subcat, sites]) => {
+        const result = applySortAndFilter(sites);
+        if (result.length) filtered[subcat] = result;
+    });
+
+    const total = Object.values(filtered).reduce((a, b) => a + b.length, 0);
+    const titleText = searchQuery
+        ? `"${searchQuery}" 검색 결과`
+        : curCat === '전체' ? '모든 AI 서비스' : curCat;
+
+    const sortLabels = { default: '기본순', 'name-asc': '이름 ↑', 'name-desc': '이름 ↓' };
 
     let html = `
-        <div class="section-header">
-            <div class="section-title">${curCat === '전체' ? '모든 AI 서비스' : curCat}</div>
-            <div class="section-subtitle">${total}개의 서비스${curSub !== '전체' ? ' · ' + curSub : ''}</div>
+        <div class="controls-bar">
+            <div class="section-header" style="margin-bottom:0">
+                <div class="section-title">${titleText}</div>
+                <div class="section-subtitle">${total}개의 서비스${!searchQuery && curSub !== '전체' ? ' · ' + curSub : ''}</div>
+            </div>
+            <div class="sort-wrap">
+                <span class="sort-label">정렬</span>
+                <div class="sort-btns">
+                    ${['default','name-asc','name-desc'].map(k => `
+                        <button class="sort-btn ${sortOrder === k ? 'active' : ''}" onclick="setSort('${k}')">${sortLabels[k]}</button>
+                    `).join('')}
+                </div>
+            </div>
         </div>
     `;
 
-    Object.entries(map).forEach(([subcat, sites]) => {
-        if (!sites?.length) return;
-        html += `<div class="subcat-section">
-            <div class="subcat-label">${subcat}</div>
-            <div class="cards-grid">${sites.map(cardHTML).join('')}</div>
+    if (total === 0) {
+        html += `<div class="no-result">
+            <div class="no-result-icon">🔍</div>
+            <div class="no-result-title">검색 결과가 없습니다</div>
+            <div class="no-result-sub">"${searchQuery}"에 대한 서비스를 찾지 못했습니다</div>
         </div>`;
-    });
+    } else {
+        Object.entries(filtered).forEach(([subcat, sites]) => {
+            html += `<div class="subcat-section">
+                <div class="subcat-label">${subcat}</div>
+                <div class="cards-grid">${sites.map(s => cardHTML(s, searchQuery)).join('')}</div>
+            </div>`;
+        });
+    }
 
     document.getElementById('main').innerHTML = html;
 }
 
-function cardHTML(s) {
+function cardHTML(s, query = '') {
     return `
         <div class="card" onclick="window.open('${s.url}','_blank')">
             <div class="card-header">
@@ -432,11 +582,11 @@ function cardHTML(s) {
                          onerror="this.outerHTML='<span class=card-icon-emoji>${s.emoji}</span>'">
                 </div>
                 <div>
-                    <div class="card-name">${s.name}</div>
-                    <div class="card-domain">${s.domain}</div>
+                    <div class="card-name">${hl(s.name, query)}</div>
+                    <div class="card-domain">${hl(s.domain, query)}</div>
                 </div>
             </div>
-            <div class="card-desc">${s.desc}</div>
+            <div class="card-desc">${hl(s.desc, query)}</div>
             <div class="card-footer">
                 <span class="card-tag tag-${s.tag}">${s.label}</span>
                 <a class="card-btn" href="${s.url}" target="_blank" onclick="event.stopPropagation()">방문하기 →</a>
@@ -458,6 +608,45 @@ function selectSub(s) {
     renderSidebar();
     renderMain();
 }
+
+function setSort(order) {
+    sortOrder = order;
+    renderMain();
+}
+
+/* ── Search Events ── */
+const searchInput = document.getElementById('searchInput');
+const searchClear = document.getElementById('searchClear');
+
+searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value.trim();
+    searchClear.classList.toggle('visible', searchQuery.length > 0);
+    renderSidebar();
+    renderMain();
+});
+
+searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.classList.remove('visible');
+    renderSidebar();
+    renderMain();
+    searchInput.focus();
+});
+
+document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+    }
+    if (e.key === 'Escape' && searchQuery) {
+        searchInput.value = '';
+        searchQuery = '';
+        searchClear.classList.remove('visible');
+        renderSidebar();
+        renderMain();
+    }
+});
 
 /* ── Init ── */
 renderNav();
