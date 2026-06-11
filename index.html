@@ -474,8 +474,6 @@
 </div>
 
 <script>
-const GOATCOUNTER_CODE = 'YOUR_GOATCOUNTER_CODE';
-
 let DATA = {};
 let FLAT_MAP = {};  // name → site 빠른 조회
 let curCat = '전체', curSub = '전체';
@@ -627,7 +625,7 @@ function renderSidebar() {
         <div class="sidebar-visitor">
             <span class="sidebar-visitor-label">방문자 수</span>
             <span class="sidebar-visitor-count" id="visitorCount">-</span>
-            <span class="sidebar-visitor-sub">누적 순 방문자</span>
+            <span class="sidebar-visitor-sub">누적 방문 수</span>
         </div>`;
     document.getElementById('sidebar').innerHTML = html;
     if (cachedVisitorCount !== null) {
@@ -819,12 +817,14 @@ document.addEventListener('keydown', e => {
 
 /* ── Visitor Count ── */
 async function loadVisitorCount() {
-    const path = encodeURIComponent(location.pathname);
+    const siteUrl = encodeURIComponent('https://nebu-25.github.io/Mypage_0611/');
     try {
-        const res = await fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/${path}.json`);
+        const res = await fetch(`https://hits.seeyoufarm.com/api/count/incr/badge.json?url=${siteUrl}`);
         if (!res.ok) throw new Error();
         const data = await res.json();
-        cachedVisitorCount = Number(data.count_unique || 0).toLocaleString('ko-KR');
+        const parts = String(data.message || '').split('/');
+        const total = (parts.length > 1 ? parts[1] : parts[0]).trim().replace(/,/g, '');
+        cachedVisitorCount = Number(total).toLocaleString('ko-KR');
     } catch {
         cachedVisitorCount = '-';
     }
@@ -874,7 +874,5 @@ loadData();
 loadVisitorCount();
 </script>
 
-<script data-goatcounter="https://YOUR_GOATCOUNTER_CODE.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
