@@ -7,7 +7,6 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ── Dark (default) ── */
         :root {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
@@ -28,7 +27,6 @@
             --grid-min: 260px;
         }
 
-        /* ── Light ── */
         [data-theme="light"] {
             --bg-primary: #f4f4f9;
             --bg-secondary: #eaeaf5;
@@ -42,7 +40,6 @@
             --border: #d8d8ea;
         }
 
-        /* ── Density ── */
         [data-density="compact"]     { --card-pad: 14px; --card-gap: 10px; --grid-min: 220px; }
         [data-density="comfortable"] { --card-pad: 28px; --card-gap: 24px; --grid-min: 300px; }
 
@@ -56,121 +53,75 @@
 
         /* ── Top Nav ── */
         .top-nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
+            position: fixed; top: 0; left: 0; right: 0;
             height: var(--nav-h);
             background: var(--nav-bg);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
+            display: flex; align-items: center;
             padding: 0 16px 0 20px;
-            z-index: 200;
-            gap: 8px;
+            z-index: 200; gap: 8px;
         }
-
         .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 8px;
-            transition: background 0.2s;
-            flex-shrink: 0;
+            display: none; flex-direction: column; justify-content: center;
+            gap: 5px; cursor: pointer; padding: 8px; border-radius: 8px;
+            transition: background 0.2s; flex-shrink: 0;
         }
         .hamburger:hover { background: rgba(108,99,255,0.12); }
-        .hamburger span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: background 0.2s; }
-
+        .hamburger span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; }
         .logo {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 20px; font-weight: 800;
             background: linear-gradient(135deg, #6c63ff, #ff6584);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-right: 16px;
-            white-space: nowrap;
-            letter-spacing: -0.5px;
-            flex-shrink: 0;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-right: 16px; white-space: nowrap; letter-spacing: -0.5px; flex-shrink: 0;
         }
-
         .nav-items { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
         .nav-items::-webkit-scrollbar { display: none; }
-
         .nav-item {
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: var(--text-muted);
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-            white-space: nowrap;
-            border: 1px solid transparent;
-            user-select: none;
+            padding: 8px 16px; border-radius: 8px; cursor: pointer;
+            color: var(--text-muted); font-size: 14px; font-weight: 500;
+            transition: all 0.2s; white-space: nowrap;
+            border: 1px solid transparent; user-select: none;
         }
         .nav-item:hover { color: var(--text); background: rgba(108,99,255,0.1); }
         .nav-item.active { color: var(--text); background: rgba(108,99,255,0.18); border-color: rgba(108,99,255,0.4); }
-
         .nav-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; }
-
         .search-wrap { position: relative; }
         .search-input {
-            background: rgba(128,128,128,0.1);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 8px 32px 8px 14px;
-            color: var(--text);
-            font-size: 13px;
-            width: 190px;
-            outline: none;
+            background: rgba(128,128,128,0.1); border: 1px solid var(--border);
+            border-radius: 10px; padding: 8px 32px 8px 14px;
+            color: var(--text); font-size: 13px; width: 190px; outline: none;
             transition: border-color 0.2s, width 0.2s, background 0.2s;
         }
         .search-input:focus { border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.08); width: 250px; }
         .search-input::placeholder { color: var(--text-muted); }
         .search-clear {
-            position: absolute; right: 9px; top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer; color: var(--text-muted);
-            font-size: 13px; display: none;
+            position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
+            cursor: pointer; color: var(--text-muted); font-size: 13px; display: none;
         }
         .search-clear.visible { display: block; }
         .search-clear:hover { color: var(--text); }
-
         .icon-btn {
-            width: 36px; height: 36px;
-            border-radius: 10px;
-            background: rgba(128,128,128,0.1);
-            border: 1px solid var(--border);
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(128,128,128,0.1); border: 1px solid var(--border);
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; font-size: 16px;
-            transition: all 0.2s;
-            user-select: none;
-            flex-shrink: 0;
+            cursor: pointer; font-size: 16px; transition: all 0.2s; user-select: none; flex-shrink: 0;
         }
         .icon-btn:hover { background: rgba(108,99,255,0.14); border-color: rgba(108,99,255,0.4); }
 
         /* ── Sidebar ── */
         .sidebar {
-            position: fixed;
-            top: var(--nav-h); left: 0;
-            width: var(--side-w);
-            height: calc(100vh - var(--nav-h));
-            background: var(--bg-sidebar);
-            border-right: 1px solid var(--border);
-            padding: 20px 10px;
-            overflow-y: auto;
-            z-index: 150;
+            position: fixed; top: var(--nav-h); left: 0;
+            width: var(--side-w); height: calc(100vh - var(--nav-h));
+            background: var(--bg-sidebar); border-right: 1px solid var(--border);
+            padding: 20px 10px; overflow-y: auto; z-index: 150;
             transition: transform 0.25s, background 0.25s, border-color 0.25s;
         }
         .sidebar::-webkit-scrollbar { width: 4px; }
         .sidebar::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.3); border-radius: 2px; }
-
         .sidebar-title {
-            font-size: 10px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.2px;
-            color: var(--text-muted); padding: 0 10px; margin-bottom: 10px;
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.2px; color: var(--text-muted); padding: 0 10px; margin-bottom: 10px;
         }
         .sidebar-item {
             padding: 8px 12px; border-radius: 8px; cursor: pointer;
@@ -182,10 +133,9 @@
         .sidebar-item.active { color: #a89fff; background: rgba(108,99,255,0.14); }
         .sidebar-count {
             margin-left: auto; font-size: 11px;
-            background: rgba(128,128,128,0.12);
-            padding: 2px 7px; border-radius: 10px; color: var(--text-muted);
+            background: rgba(128,128,128,0.12); padding: 2px 7px;
+            border-radius: 10px; color: var(--text-muted);
         }
-
         .sidebar-backdrop {
             display: none; position: fixed; inset: 0;
             background: rgba(0,0,0,0.5); z-index: 140;
@@ -194,44 +144,32 @@
 
         /* ── Main ── */
         .main {
-            margin-left: var(--side-w);
-            margin-top: var(--nav-h);
-            padding: 32px 28px;
-            min-height: calc(100vh - var(--nav-h));
+            margin-left: var(--side-w); margin-top: var(--nav-h);
+            padding: 32px 28px; min-height: calc(100vh - var(--nav-h));
             transition: margin-left 0.25s;
         }
 
         /* ── Controls Bar ── */
         .controls-bar {
-            display: flex; align-items: center;
-            justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 24px; flex-wrap: wrap; gap: 10px;
         }
         .section-title { font-size: 24px; font-weight: 800; margin-bottom: 4px; }
         .section-subtitle { color: var(--text-muted); font-size: 13px; }
-
         .ctrl-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
         .ctrl-label { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
-
         .btn-group { display: flex; gap: 3px; }
         .ctrl-btn {
-            padding: 5px 11px; border-radius: 7px;
-            border: 1px solid var(--border);
+            padding: 5px 11px; border-radius: 7px; border: 1px solid var(--border);
             background: transparent; color: var(--text-muted);
-            font-size: 12px; font-weight: 500; cursor: pointer;
-            transition: all 0.18s;
+            font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.18s;
         }
         .ctrl-btn:hover { color: var(--text); border-color: rgba(108,99,255,0.4); }
         .ctrl-btn.active { color: #a89fff; border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.12); }
-
         .view-btn {
-            width: 30px; height: 30px;
-            border-radius: 7px; border: 1px solid var(--border);
-            background: transparent; color: var(--text-muted);
-            font-size: 15px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.18s;
+            width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border);
+            background: transparent; color: var(--text-muted); font-size: 15px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: all 0.18s;
         }
         .view-btn:hover { color: var(--text); border-color: rgba(108,99,255,0.4); }
         .view-btn.active { color: #a89fff; border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.12); }
@@ -244,27 +182,21 @@
         }
         .subcat-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-        /* ── Cards Grid ── */
+        /* ── Cards ── */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(var(--grid-min), 1fr));
             gap: var(--card-gap);
         }
-
-        /* ── Cards List ── */
         .cards-list { display: flex; flex-direction: column; gap: 8px; }
         .cards-list .card { flex-direction: row; align-items: center; padding: 14px 18px; gap: 16px; }
         .cards-list .card-header { flex: 1; min-width: 0; }
         .cards-list .card-desc { display: none; }
         .cards-list .card-footer { flex-shrink: 0; }
 
-        /* ── Card ── */
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: var(--card-pad);
-            cursor: pointer;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: var(--card-pad); cursor: pointer;
             transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s, background 0.25s;
             position: relative; overflow: hidden;
             display: flex; flex-direction: column; gap: 14px;
@@ -281,25 +213,29 @@
         .card-header { display: flex; align-items: center; gap: 14px; }
         .card-icon {
             width: 46px; height: 46px; border-radius: 12px;
-            background: var(--bg-secondary); display: flex;
-            align-items: center; justify-content: center;
-            overflow: hidden; flex-shrink: 0; border: 1px solid var(--border);
+            background: var(--bg-secondary); display: flex; align-items: center;
+            justify-content: center; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border);
         }
         .card-icon img { width: 28px; height: 28px; object-fit: contain; }
         .card-icon-emoji { font-size: 22px; line-height: 1; }
         .card-name { font-size: 15px; font-weight: 700; }
         .card-domain { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
         .card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; flex: 1; }
-        .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+        .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+        .card-badges { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
 
-        .card-tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; border: 1px solid; white-space: nowrap; }
+        .card-tag {
+            font-size: 11px; font-weight: 600; padding: 3px 9px;
+            border-radius: 20px; border: 1px solid; white-space: nowrap;
+        }
+        .pricing-badge {
+            font-size: 10px; font-weight: 700; padding: 3px 8px;
+            border-radius: 20px; border: 1px solid; white-space: nowrap; letter-spacing: 0.3px;
+        }
         .card-btn {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 6px 13px;
-            background: rgba(108,99,255,0.12);
-            border: 1px solid rgba(108,99,255,0.28);
-            border-radius: 8px; color: #a89fff;
-            font-size: 12px; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 4px; padding: 6px 13px;
+            background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.28);
+            border-radius: 8px; color: #a89fff; font-size: 12px; font-weight: 600;
             text-decoration: none; transition: all 0.18s; white-space: nowrap;
         }
         .card-btn:hover { background: rgba(108,99,255,0.22); border-color: rgba(108,99,255,0.5); color: #c4bfff; }
@@ -314,6 +250,104 @@
         .tag-platform  { color: #fb923c; border-color: rgba(251,146,60,0.3);  background: rgba(251,146,60,0.07); }
         .tag-research  { color: #a5b4fc; border-color: rgba(165,180,252,0.3); background: rgba(165,180,252,0.07); }
 
+        /* Pricing badge colors */
+        .price-free     { color: #4ade80; border-color: rgba(74,222,128,0.35); background: rgba(74,222,128,0.08); }
+        .price-freemium { color: #60a5fa; border-color: rgba(96,165,250,0.35); background: rgba(96,165,250,0.08); }
+        .price-paid     { color: #f59e0b; border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.08); }
+
+        /* ── Modal ── */
+        .modal-backdrop {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.72); z-index: 500;
+            align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-backdrop.open { display: flex; }
+
+        .modal {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 20px; width: 100%; max-width: 520px;
+            max-height: 90vh; overflow-y: auto;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+            animation: modalIn 0.22s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.94) translateY(12px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-header {
+            display: flex; align-items: center; gap: 14px;
+            padding: 22px 22px 0;
+        }
+        .modal-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            background: var(--bg-secondary); border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .modal-icon img { width: 32px; height: 32px; object-fit: contain; }
+        .modal-icon-emoji { font-size: 26px; }
+        .modal-name { font-size: 18px; font-weight: 800; }
+        .modal-domain { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .modal-close {
+            margin-left: auto; width: 32px; height: 32px; border-radius: 8px;
+            border: 1px solid var(--border); background: transparent;
+            color: var(--text-muted); font-size: 14px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.18s; flex-shrink: 0;
+        }
+        .modal-close:hover { color: var(--text); background: rgba(108,99,255,0.1); }
+
+        .modal-body { padding: 18px 22px; display: flex; flex-direction: column; gap: 18px; }
+
+        .modal-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+        .modal-section-title {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: var(--text-muted); margin-bottom: 10px;
+        }
+        .modal-features ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .modal-features li {
+            font-size: 13px; color: var(--text); padding-left: 16px; position: relative; line-height: 1.5;
+        }
+        .modal-features li::before {
+            content: '▸'; position: absolute; left: 0;
+            color: var(--accent); font-size: 11px; top: 2px;
+        }
+
+        .modal-pricing-box {
+            background: var(--bg-secondary); border-radius: 10px;
+            padding: 12px 14px; font-size: 13px; color: var(--text);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .modal-info-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .info-tag {
+            font-size: 11px; font-weight: 600; padding: 4px 10px;
+            border-radius: 20px; border: 1px solid; white-space: nowrap;
+        }
+        .info-tag-yes { color: #4ade80; border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.07); }
+        .info-tag-no  { color: var(--text-muted); border-color: var(--border); background: transparent; opacity: 0.5; }
+
+        .modal-footer {
+            padding: 0 22px 22px;
+            display: flex; justify-content: flex-end; gap: 8px;
+        }
+        .modal-visit-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 22px; border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), #9b5de5);
+            color: #fff; font-size: 14px; font-weight: 600;
+            text-decoration: none; transition: opacity 0.2s;
+        }
+        .modal-visit-btn:hover { opacity: 0.88; }
+        .modal-cancel-btn {
+            padding: 10px 18px; border-radius: 10px;
+            border: 1px solid var(--border); background: transparent;
+            color: var(--text-muted); font-size: 14px; cursor: pointer; transition: all 0.18s;
+        }
+        .modal-cancel-btn:hover { color: var(--text); border-color: rgba(108,99,255,0.4); }
+
         /* ── Skeleton ── */
         @keyframes shimmer {
             0%   { background-position: -600px 0; }
@@ -321,9 +355,7 @@
         }
         .skeleton {
             background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-shine) 50%, var(--skeleton-base) 75%);
-            background-size: 1200px 100%;
-            animation: shimmer 1.6s infinite;
-            border-radius: 6px;
+            background-size: 1200px 100%; animation: shimmer 1.6s infinite; border-radius: 6px;
         }
         .skeleton-card {
             background: var(--bg-card); border: 1px solid var(--border);
@@ -369,12 +401,11 @@
 </head>
 <body>
 
-<!-- Sidebar backdrop -->
 <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <!-- Top Nav -->
 <nav class="top-nav">
-    <div class="hamburger" id="hamburger" onclick="toggleSidebar()" title="메뉴">
+    <div class="hamburger" id="hamburger" onclick="toggleSidebar()">
         <span></span><span></span><span></span>
     </div>
     <div class="logo">✦ AI Hub</div>
@@ -382,9 +413,9 @@
     <div class="nav-actions">
         <div class="search-wrap">
             <input class="search-input" id="searchInput" type="text" placeholder="🔍 서비스 검색..." autocomplete="off">
-            <span class="search-clear" id="searchClear" title="초기화">✕</span>
+            <span class="search-clear" id="searchClear">✕</span>
         </div>
-        <div class="icon-btn" id="themeBtn" onclick="toggleTheme()" title="테마 변경">🌙</div>
+        <div class="icon-btn" id="themeBtn" onclick="toggleTheme()">🌙</div>
     </div>
 </nav>
 
@@ -394,87 +425,46 @@
 <!-- Main -->
 <main class="main" id="main"></main>
 
-<script>
-const DATA = {
-    'AI 어시스턴트': {
-        '챗봇 / LLM': [
-            { name:'Claude',        url:'https://claude.ai',                       domain:'claude.ai',             desc:'Anthropic이 만든 안전하고 유능한 AI 어시스턴트',    emoji:'🤖', tag:'assistant', label:'챗봇'     },
-            { name:'ChatGPT',       url:'https://chatgpt.com',                     domain:'chatgpt.com',           desc:'OpenAI가 개발한 세계 최대 AI 챗봇 서비스',         emoji:'💬', tag:'assistant', label:'챗봇'     },
-            { name:'Gemini',        url:'https://gemini.google.com',               domain:'gemini.google.com',     desc:'Google DeepMind의 멀티모달 AI 어시스턴트',         emoji:'💎', tag:'assistant', label:'챗봇'     },
-            { name:'Grok',          url:'https://grok.com',                        domain:'grok.com',              desc:'xAI가 개발한 실시간 정보 기반 AI 챗봇',            emoji:'⚡', tag:'assistant', label:'챗봇'     },
-            { name:'Mistral',       url:'https://chat.mistral.ai',                 domain:'mistral.ai',            desc:'오픈소스 중심의 유럽산 고성능 LLM',                emoji:'🌊', tag:'assistant', label:'챗봇'     },
-            { name:'Copilot',       url:'https://copilot.microsoft.com',           domain:'copilot.microsoft.com', desc:'Microsoft의 GPT-4 기반 AI 어시스턴트',            emoji:'🪟', tag:'assistant', label:'챗봇'     },
-        ],
-        '검색 AI': [
-            { name:'Genspark',      url:'https://www.genspark.ai',                 domain:'genspark.ai',           desc:'AI 에이전트 기반의 차세대 검색 플랫폼',            emoji:'✨', tag:'assistant', label:'검색 AI'  },
-            { name:'Perplexity',    url:'https://perplexity.ai',                   domain:'perplexity.ai',         desc:'실시간 웹 검색 기반 AI 답변 엔진',                emoji:'🔍', tag:'assistant', label:'검색 AI'  },
-        ],
-    },
-    'AI 창작 도구': {
-        '이미지 생성': [
-            { name:'Whisk',         url:'https://whisk.google.com',                domain:'whisk.google.com',      desc:'Google Labs의 이미지-투-이미지 AI 생성 도구',      emoji:'🎨', tag:'image',     label:'이미지'   },
-            { name:'Midjourney',    url:'https://midjourney.com',                  domain:'midjourney.com',        desc:'압도적인 품질의 AI 아트 이미지 생성기',            emoji:'🖼️', tag:'image',     label:'이미지'   },
-            { name:'Stability AI',  url:'https://stability.ai',                    domain:'stability.ai',          desc:'Stable Diffusion 개발사의 이미지 생성 플랫폼',     emoji:'🌈', tag:'image',     label:'이미지'   },
-            { name:'Adobe Firefly', url:'https://firefly.adobe.com',               domain:'firefly.adobe.com',     desc:'크리에이티브 워크플로우를 위한 Adobe AI',          emoji:'🦋', tag:'image',     label:'이미지'   },
-            { name:'Leonardo AI',   url:'https://leonardo.ai',                     domain:'leonardo.ai',           desc:'게임·디자인에 특화된 AI 이미지 플랫폼',            emoji:'🎭', tag:'image',     label:'이미지'   },
-        ],
-        '음악 생성': [
-            { name:'SUNO',          url:'https://suno.com',                        domain:'suno.com',              desc:'텍스트만으로 완성된 음악을 만드는 AI',             emoji:'🎵', tag:'music',     label:'음악'     },
-        ],
-        '비디오 생성': [
-            { name:'Runway ML',     url:'https://runwayml.com',                    domain:'runwayml.com',          desc:'텍스트·이미지로 영상을 생성·편집하는 AI',          emoji:'🎬', tag:'video',     label:'비디오'   },
-            { name:'Kling AI',      url:'https://klingai.com',                     domain:'klingai.com',           desc:'고품질 AI 비디오 생성 플랫폼',                    emoji:'🎥', tag:'video',     label:'비디오'   },
-        ],
-    },
-    'AI 개발 도구': {
-        '앱 빌더': [
-            { name:'Lovable',       url:'https://lovable.dev',                     domain:'lovable.dev',           desc:'자연어로 풀스택 웹앱을 만드는 AI 빌더',            emoji:'💜', tag:'appbuild',  label:'앱 빌더'  },
-            { name:'V0',            url:'https://v0.dev',                          domain:'v0.dev',                desc:'Vercel의 AI UI 컴포넌트 생성기',                  emoji:'▲',  tag:'appbuild',  label:'앱 빌더'  },
-            { name:'Bolt.new',      url:'https://bolt.new',                        domain:'bolt.new',              desc:'브라우저에서 즉시 실행되는 AI 웹앱 빌더',          emoji:'⚡', tag:'appbuild',  label:'앱 빌더'  },
-            { name:'Replit',        url:'https://replit.com',                      domain:'replit.com',            desc:'AI 기반 온라인 코딩 & 배포 플랫폼',               emoji:'🔁', tag:'appbuild',  label:'앱 빌더'  },
-        ],
-        '코딩 도구': [
-            { name:'Cursor',        url:'https://cursor.sh',                       domain:'cursor.sh',             desc:'AI가 내장된 차세대 코드 에디터',                   emoji:'⌨️', tag:'coding',    label:'코딩'     },
-            { name:'GitHub Copilot',url:'https://github.com/features/copilot',     domain:'github.com',            desc:'GitHub & OpenAI의 AI 코드 자동완성',              emoji:'🐙', tag:'coding',    label:'코딩'     },
-        ],
-    },
-    '플랫폼 & 리소스': {
-        '모델 허브': [
-            { name:'Hugging Face',  url:'https://huggingface.co',                  domain:'huggingface.co',        desc:'세계 최대 AI 모델 & 데이터셋 허브',               emoji:'🤗', tag:'platform',  label:'모델 허브' },
-            { name:'Replicate',     url:'https://replicate.com',                   domain:'replicate.com',         desc:'API로 AI 모델을 즉시 실행하는 플랫폼',             emoji:'♻️', tag:'platform',  label:'모델 허브' },
-            { name:'Together AI',   url:'https://together.ai',                     domain:'together.ai',           desc:'오픈소스 LLM을 위한 클라우드 API 서비스',          emoji:'🤝', tag:'platform',  label:'모델 허브' },
-        ],
-        '코드 저장소': [
-            { name:'GitHub',        url:'https://github.com',                      domain:'github.com',            desc:'세계 최대 오픈소스 코드 저장소',                   emoji:'🐙', tag:'platform',  label:'코드'     },
-        ],
-        '학습 & 연구': [
-            { name:'OpenAI',        url:'https://openai.com',                      domain:'openai.com',            desc:'GPT 시리즈를 개발한 AI 선도 연구 기관',            emoji:'🔬', tag:'research',  label:'연구'     },
-            { name:'Kaggle',        url:'https://kaggle.com',                      domain:'kaggle.com',            desc:'AI/ML 데이터셋, 노트북, 경진대회 플랫폼',          emoji:'📊', tag:'research',  label:'학습'     },
-            { name:'Papers With Code', url:'https://paperswithcode.com',           domain:'paperswithcode.com',    desc:'AI 논문과 구현 코드를 연결하는 데이터베이스',       emoji:'📄', tag:'research',  label:'논문'     },
-        ],
-    },
-};
+<!-- Modal -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="handleBackdropClick(event)">
+    <div class="modal" id="modal"></div>
+</div>
 
-const CATEGORIES = ['전체', ...Object.keys(DATA)];
-let curCat    = '전체';
-let curSub    = '전체';
-let searchQuery = '';
-let sortOrder = 'default';
-let viewMode  = 'grid';      // 'grid' | 'list'
-let density   = 'default';   // 'compact' | 'default' | 'comfortable'
-let isDark    = true;
+<script>
+let DATA = {};
+let FLAT_MAP = {};  // name → site 빠른 조회
+let curCat = '전체', curSub = '전체';
+let searchQuery = '', sortOrder = 'default';
+let viewMode = 'grid', density = 'default';
+let isDark = true;
+
+/* ── Data load ── */
+async function loadData() {
+    try {
+        const res = await fetch('data.json');
+        DATA = await res.json();
+    } catch {
+        // 로컬 파일 실행 시 fetch 불가 — 빌트인 데이터로 폴백
+        DATA = FALLBACK_DATA;
+    }
+    Object.values(DATA).forEach(subs =>
+        Object.values(subs).forEach(arr =>
+            arr.forEach(s => { FLAT_MAP[s.name] = s; })
+        )
+    );
+    renderNav(); renderSidebar(); renderMain(true);
+}
 
 /* ── Theme ── */
 function initTheme() {
     const saved = localStorage.getItem('ai-hub-theme');
-    const sys   = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const sys = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     isDark = (saved || sys) !== 'light';
     applyTheme();
 }
 function applyTheme() {
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     document.getElementById('themeBtn').textContent = isDark ? '☀️' : '🌙';
-    document.getElementById('themeBtn').title = isDark ? '라이트 모드로 전환' : '다크 모드로 전환';
 }
 function toggleTheme() {
     isDark = !isDark;
@@ -494,7 +484,7 @@ function setDensity(d) {
     renderMain();
 }
 
-/* ── Mobile Sidebar ── */
+/* ── Sidebar ── */
 function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
     document.getElementById('sidebarBackdrop').classList.toggle('visible');
@@ -520,70 +510,64 @@ function sitesFor(cat, sub) {
     const subs = DATA[cat] || {};
     return sub === '전체' ? subs : { [sub]: subs[sub] || [] };
 }
-
 function subcatsFor(cat) {
     if (cat === '전체') return Object.values(DATA).flatMap(s => Object.keys(s));
     return Object.keys(DATA[cat] || {});
 }
-
 function countFor(cat, sub) {
     return Object.values(sitesFor(cat, sub)).reduce((a, b) => a + b.length, 0);
 }
-
 function applyFilter(sites) {
     let r = [...sites];
     if (searchQuery) {
         const q = searchQuery.toLowerCase();
         r = r.filter(s =>
-            s.name.toLowerCase().includes(q) ||
-            s.desc.toLowerCase().includes(q) ||
-            s.domain.toLowerCase().includes(q) ||
-            s.label.toLowerCase().includes(q)
+            s.name.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q) ||
+            s.domain.toLowerCase().includes(q) || s.label.toLowerCase().includes(q)
         );
     }
     if (sortOrder === 'name-asc')  r.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
     if (sortOrder === 'name-desc') r.sort((a, b) => b.name.localeCompare(a.name, 'ko'));
     return r;
 }
-
 function hl(text, q) {
     if (!q) return text;
     const e = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return text.replace(new RegExp(`(${e})`, 'gi'), '<span class="hl">$1</span>');
 }
+function pricingLabel(p) {
+    return { free: 'Free', freemium: 'Freemium', paid: 'Paid' }[p] || p;
+}
 
 /* ── Skeleton ── */
 function skeletonCard() {
     return `<div class="skeleton-card">
-        <div class="sk-row">
-            <div class="skeleton sk-icon"></div>
-            <div style="flex:1"><div class="skeleton sk-title"></div><div class="skeleton sk-domain"></div></div>
-        </div>
+        <div class="sk-row"><div class="skeleton sk-icon"></div>
+            <div style="flex:1"><div class="skeleton sk-title"></div><div class="skeleton sk-domain"></div></div></div>
         <div><div class="skeleton sk-desc"></div><div class="skeleton sk-desc2"></div></div>
         <div class="sk-footer"><div class="skeleton sk-tag"></div><div class="skeleton sk-btn"></div></div>
     </div>`;
 }
-
 function showSkeleton() {
-    const grid = `<div class="cards-grid">${skeletonCard().repeat(6)}</div>`;
     document.getElementById('main').innerHTML =
         `<div class="controls-bar" style="opacity:.4;pointer-events:none">
             <div><div class="skeleton" style="height:24px;width:180px;border-radius:6px"></div>
                  <div class="skeleton" style="height:13px;width:90px;border-radius:4px;margin-top:6px"></div></div>
          </div>
-         <div class="subcat-section">${grid}</div>`;
+         <div class="subcat-section"><div class="cards-grid">${skeletonCard().repeat(6)}</div></div>`;
 }
 
 /* ── Render Nav ── */
 function renderNav() {
-    document.getElementById('topNav').innerHTML = CATEGORIES.map(c =>
+    const cats = ['전체', ...Object.keys(DATA)];
+    document.getElementById('topNav').innerHTML = cats.map(c =>
         `<div class="nav-item ${c === curCat ? 'active' : ''}" onclick="selectCat('${c}')">${c}</div>`
     ).join('');
 }
 
 /* ── Render Sidebar ── */
 function renderSidebar() {
-    const subs  = subcatsFor(curCat);
+    const subs = subcatsFor(curCat);
     const total = countFor(curCat, '전체');
     let html = `<div class="sidebar-title">카테고리</div>`;
     html += `<div class="sidebar-item ${curSub === '전체' ? 'active' : ''}" onclick="selectSub('전체')">
@@ -598,14 +582,9 @@ function renderSidebar() {
 
 /* ── Render Main ── */
 function renderMain(withSkeleton = false) {
-    if (withSkeleton) {
-        showSkeleton();
-        setTimeout(_renderMain, 200);
-    } else {
-        _renderMain();
-    }
+    if (withSkeleton) { showSkeleton(); setTimeout(_renderMain, 200); }
+    else _renderMain();
 }
-
 function _renderMain() {
     let baseMap;
     if (searchQuery) {
@@ -619,21 +598,17 @@ function _renderMain() {
     } else {
         baseMap = sitesFor(curCat, curSub);
     }
-
     const filtered = {};
     Object.entries(baseMap).forEach(([sub, sites]) => {
         const r = applyFilter(sites);
         if (r.length) filtered[sub] = r;
     });
-
-    const total     = Object.values(filtered).reduce((a, b) => a + b.length, 0);
-    const titleText = searchQuery
-        ? `"${searchQuery}" 검색 결과`
+    const total = Object.values(filtered).reduce((a, b) => a + b.length, 0);
+    const titleText = searchQuery ? `"${searchQuery}" 검색 결과`
         : curCat === '전체' ? '모든 AI 서비스' : curCat;
-
-    const sortLabels    = { default: '기본순', 'name-asc': '이름 ↑', 'name-desc': '이름 ↓' };
+    const sortLabels = { default: '기본순', 'name-asc': '이름 ↑', 'name-desc': '이름 ↓' };
     const densityLabels = { compact: '좁게', default: '기본', comfortable: '넓게' };
-    const gridClass     = viewMode === 'list' ? 'cards-list' : 'cards-grid';
+    const gridClass = viewMode === 'list' ? 'cards-list' : 'cards-grid';
 
     let html = `
         <div class="controls-bar">
@@ -650,8 +625,8 @@ function _renderMain() {
                 </div>
                 <span class="ctrl-label" style="margin-left:4px">보기</span>
                 <div class="btn-group">
-                    <button class="view-btn ${viewMode === 'grid' ? 'active' : ''}" onclick="setView('grid')" title="그리드 뷰">⊞</button>
-                    <button class="view-btn ${viewMode === 'list' ? 'active' : ''}" onclick="setView('list')" title="리스트 뷰">≡</button>
+                    <button class="view-btn ${viewMode === 'grid' ? 'active' : ''}" onclick="setView('grid')" title="그리드">⊞</button>
+                    <button class="view-btn ${viewMode === 'list' ? 'active' : ''}" onclick="setView('list')" title="리스트">≡</button>
                 </div>
                 <span class="ctrl-label" style="margin-left:4px">정렬</span>
                 <div class="btn-group">
@@ -672,17 +647,17 @@ function _renderMain() {
         Object.entries(filtered).forEach(([subcat, sites]) => {
             html += `<div class="subcat-section">
                 <div class="subcat-label">${subcat}</div>
-                <div class="${gridClass}">${sites.map(s => cardHTML(s, searchQuery)).join('')}
-                </div></div>`;
+                <div class="${gridClass}">${sites.map(s => cardHTML(s, searchQuery)).join('')}</div>
+            </div>`;
         });
     }
-
     document.getElementById('main').innerHTML = html;
 }
 
 function cardHTML(s, q = '') {
+    const pLabel = pricingLabel(s.pricing);
     return `
-        <div class="card" onclick="window.open('${s.url}','_blank')">
+        <div class="card" onclick="openModal('${s.name.replace(/'/g, "\\'")}')">
             <div class="card-header">
                 <div class="card-icon">
                     <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=64"
@@ -696,30 +671,93 @@ function cardHTML(s, q = '') {
             </div>
             <div class="card-desc">${hl(s.desc, q)}</div>
             <div class="card-footer">
-                <span class="card-tag tag-${s.tag}">${s.label}</span>
+                <div class="card-badges">
+                    <span class="card-tag tag-${s.tag}">${s.label}</span>
+                    <span class="pricing-badge price-${s.pricing}">${pLabel}</span>
+                </div>
                 <a class="card-btn" href="${s.url}" target="_blank" onclick="event.stopPropagation()">방문하기 →</a>
             </div>
         </div>`;
 }
 
-/* ── Events ── */
-function selectCat(c) {
-    curCat = c; curSub = '전체';
-    closeSidebar();
-    renderNav(); renderSidebar(); renderMain(true);
+/* ── Modal ── */
+function openModal(name) {
+    const s = FLAT_MAP[name];
+    if (!s) return;
+    const infoTags = [
+        { label: '한국어 지원', val: s.korean },
+        { label: 'API 제공',   val: s.api },
+        { label: '모바일 앱',  val: s.mobileApp },
+    ];
+    document.getElementById('modal').innerHTML = `
+        <div class="modal-header">
+            <div class="modal-icon">
+                <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=64"
+                     alt="${s.name}"
+                     onerror="this.outerHTML='<span class=modal-icon-emoji>${s.emoji}</span>'">
+            </div>
+            <div>
+                <div class="modal-name">${s.name}</div>
+                <div class="modal-domain">${s.domain}</div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <p class="modal-desc">${s.desc}</p>
+            <div class="modal-features">
+                <div class="modal-section-title">주요 기능</div>
+                <ul>${(s.features || []).map(f => `<li>${f}</li>`).join('')}</ul>
+            </div>
+            <div>
+                <div class="modal-section-title">요금제</div>
+                <div class="modal-pricing-box">
+                    <span class="pricing-badge price-${s.pricing}">${pricingLabel(s.pricing)}</span>
+                    <span style="font-size:13px;color:var(--text-muted)">${s.pricingNote || ''}</span>
+                </div>
+            </div>
+            <div>
+                <div class="modal-section-title">지원 정보</div>
+                <div class="modal-info-tags">
+                    ${infoTags.map(t =>
+                        `<span class="info-tag ${t.val ? 'info-tag-yes' : 'info-tag-no'}">${t.val ? '✓' : '✗'} ${t.label}</span>`
+                    ).join('')}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-cancel-btn" onclick="closeModal()">닫기</button>
+            <a class="modal-visit-btn" href="${s.url}" target="_blank">방문하기 →</a>
+        </div>`;
+    document.getElementById('modalBackdrop').classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
-function selectSub(s) {
-    curSub = s;
-    closeSidebar();
-    renderSidebar(); renderMain(true);
+function closeModal() {
+    document.getElementById('modalBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
 }
-function setSort(o) { sortOrder = o; renderMain(); }
-function setView(v) { viewMode  = v; renderMain(); }
+function handleBackdropClick(e) {
+    if (e.target === document.getElementById('modalBackdrop')) closeModal();
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (document.getElementById('modalBackdrop').classList.contains('open')) { closeModal(); return; }
+        if (searchQuery) {
+            searchInput.value = ''; searchQuery = '';
+            searchClear.classList.remove('visible');
+            renderSidebar(); renderMain();
+        }
+    }
+    if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
+});
 
-/* ── Search ── */
+/* ── Events ── */
+function selectCat(c) { curCat = c; curSub = '전체'; closeSidebar(); renderNav(); renderSidebar(); renderMain(true); }
+function selectSub(s) { curSub = s; closeSidebar(); renderSidebar(); renderMain(true); }
+function setSort(o)   { sortOrder = o; renderMain(); }
+function setView(v)   { viewMode  = v; renderMain(); }
+
 const searchInput = document.getElementById('searchInput');
 const searchClear = document.getElementById('searchClear');
-
 searchInput.addEventListener('input', () => {
     searchQuery = searchInput.value.trim();
     searchClear.classList.toggle('visible', searchQuery.length > 0);
@@ -730,21 +768,11 @@ searchClear.addEventListener('click', () => {
     searchClear.classList.remove('visible');
     renderSidebar(); renderMain(); searchInput.focus();
 });
-document.addEventListener('keydown', e => {
-    if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
-    if (e.key === 'Escape' && searchQuery) {
-        searchInput.value = ''; searchQuery = '';
-        searchClear.classList.remove('visible');
-        renderSidebar(); renderMain();
-    }
-});
 
 /* ── Init ── */
 initTheme();
 initDensity();
-renderNav();
-renderSidebar();
-renderMain(true);
+loadData();
 </script>
 </body>
 </html>
